@@ -1,34 +1,50 @@
+# Raw datasets
+data/raw/
+data/egoclip/
+data/ek100/
+data/videos/
+data/checkpoints/
+
+# Checkpoints and model weights
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# Large intermediate outputs
+features/
+cache/
+outputs/
+logs/
+runs/
+wandb/
+mlruns/
+
+# Cluster logs
+*.log
+*.out
+*.err
+slurm-*.out
+
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
 .ipynb_checkpoints/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
 
 # Environments
 .env
 .venv/
 venv/
+env/
 conda-meta/
 
-# Large data / checkpoints
-*.pt
-*.pth
-*.ckpt
-*.pkl
-*.mp4
-*.avi
-*.zip
-*.tar
-*.tar.gz
-
-# Local data and runs
-data/raw/
-data/videos/
-data/checkpoints/
-runs/
-checkpoints/
-outputs/
-logs/
-
-# OS / editor
-.DS_Store
+# IDE / OS
 .vscode/
+.idea/
+.DS_Store
