@@ -658,7 +658,7 @@ def main():
     parser.add_argument("--noun-map-csv", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=50000, help="0 means full data")
-    parser.add_argument("--run-name", type=str, default="v2_smoke50k")
+    parser.add_argument("--run-name", type=str, default="paper")
     parser.add_argument("--chunksize", type=int, default=50000)
     parser.add_argument("--batch-size", type=int, default=1000)
     parser.add_argument("--part-size", type=int, default=500000)
@@ -727,6 +727,8 @@ def main():
                 break
             if len(chunk) > remaining:
                 chunk = chunk.head(remaining)
+
+        chunk = chunk.copy()
 
         # Sort within chunk. Cache persists across chunks.
         chunk["_narration_time_num"] = pd.to_numeric(chunk["narration_time"], errors="coerce")
