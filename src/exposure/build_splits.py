@@ -1,15 +1,32 @@
 #!/usr/bin/env python
+import argparse
 from pathlib import Path
 import pandas as pd
 
-OLD_LABEL_CSV = Path("Data/processed/ek100_mir_test_exposure_labeled.csv")
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--old-label-csv", type=Path, required=True)
+    parser.add_argument("--pair-csv", type=Path, required=True)
+    parser.add_argument("--seen-verbs-csv", type=Path, required=True)
+    parser.add_argument("--seen-nouns-csv", type=Path, required=True)
+    parser.add_argument("--marginal-csv", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--output-prefix",
+        type=str,
+        default="sc_uc_ua_coarse_migration",
+    )
+    return parser.parse_args()
 
-PAIR_CSV = Path("Data/processed/egoclip_ek100_pair_freq_v3_full.csv")
-SEEN_VERBS_CSV = Path("Data/processed/egoclip_ek100_seen_verbs_v3_full.csv")
-SEEN_NOUNS_CSV = Path("Data/processed/egoclip_ek100_seen_nouns_v3_full.csv")
-MARGINAL_CSV = Path("Data/processed/egoclip_ek100_marginal_only_v3_full.csv")
+args = parse_args()
 
-OUT_DIR = Path("Data/processed/sc_uc_ua_migration_v3_full_20260705")
+OLD_LABEL_CSV = args.old_label_csv
+PAIR_CSV = args.pair_csv
+SEEN_VERBS_CSV = args.seen_verbs_csv
+SEEN_NOUNS_CSV = args.seen_nouns_csv
+MARGINAL_CSV = args.marginal_csv
+
+OUT_DIR = args.output_dir
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 LABEL_ORDER = ["SC", "UC", "UA"]
@@ -120,7 +137,7 @@ noun_consistency["violation"] = noun_consistency["seen_freq"] < noun_consistency
 verb_bad = verb_consistency[verb_consistency["violation"]].copy()
 noun_bad = noun_consistency[noun_consistency["violation"]].copy()
 
-prefix = OUT_DIR / "sc_uc_ua_coarse_migration_v1labels_to_v3_full_20260705"
+prefix = OUT_DIR / args.output_prefix
 
 out.to_csv(str(prefix) + "_per_query.csv", index=False)
 matrix.to_csv(str(prefix) + "_matrix.csv")
@@ -133,11 +150,11 @@ verb_bad.to_csv(str(prefix) + "_verb_marginal_seen_violations.csv", index=False)
 noun_bad.to_csv(str(prefix) + "_noun_marginal_seen_violations.csv", index=False)
 
 with open(str(prefix) + "_README.txt", "w") as f:
-    f.write("Coarse SC/UC/UA migration from original exposure_label to v3_full labels.\n")
-    f.write("Old coarse labels source: Data/processed/ek100_mir_test_exposure_labeled.csv: exposure_label.\n")
+    f.write("Coarse SC/UC/UA migration from original exposure_label to current ledger labels.\n")
+    f.write(f"Old coarse labels source: {OLD_LABEL_CSV}: exposure_label.\n")
     f.write("This script intentionally ignores exposure_label_fine.\n")
     f.write("Rare/freq split is not computed here and must be handled separately.\n")
-    f.write("New labels source: v3_full pair + combined seen verb/noun tables.\n")
+    f.write("New labels source: pair table plus combined seen verb/noun tables.\n")
     f.write("Rule: SC if pair seen; UC if both verb and noun seen but pair unseen; UA otherwise.\n")
     f.write("Generated before retrieval metric computation.\n")
 

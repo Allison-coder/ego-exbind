@@ -11,9 +11,9 @@ import spacy
 SCRIPT = Path(__file__).resolve()
 PROJECT_ROOT = SCRIPT.parents[2]
 
-EGOCLIP_CSV = PROJECT_ROOT / "Data/egoclip/egoclip.csv"
-VERB_MAP_CSV = PROJECT_ROOT / "Data/processed/ek100_verb_word2class.csv"
-NOUN_MAP_CSV = PROJECT_ROOT / "Data/processed/ek100_noun_word2class.csv"
+EGOCLIP_CSV = None
+VERB_MAP_CSV = None
+NOUN_MAP_CSV = None
 
 BAD_VERBS = {"be", "have", "do"}
 
@@ -650,7 +650,13 @@ def merge_parts(part_dir, out_dir, run_name):
 
 
 def main():
+    global EGOCLIP_CSV, VERB_MAP_CSV, NOUN_MAP_CSV
+
     parser = argparse.ArgumentParser()
+    parser.add_argument("--egoclip-csv", type=Path, required=True)
+    parser.add_argument("--verb-map-csv", type=Path, required=True)
+    parser.add_argument("--noun-map-csv", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=50000, help="0 means full data")
     parser.add_argument("--run-name", type=str, default="v2_smoke50k")
     parser.add_argument("--chunksize", type=int, default=50000)
@@ -660,7 +666,11 @@ def main():
 
     limit = None if args.limit == 0 else args.limit
 
-    out_dir = PROJECT_ROOT / "Data/processed"
+    EGOCLIP_CSV = args.egoclip_csv
+    VERB_MAP_CSV = args.verb_map_csv
+    NOUN_MAP_CSV = args.noun_map_csv
+
+    out_dir = args.output_dir
     part_dir = out_dir / f"egoclip_map_parts_{args.run_name}"
 
     print("SCRIPT:", SCRIPT)

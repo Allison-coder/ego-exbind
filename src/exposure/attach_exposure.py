@@ -1,21 +1,44 @@
 #!/usr/bin/env python
+import argparse
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
-QUERY_CSV = Path("Data/processed/ek100_mir_test_exposure_labeled.csv")
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query-csv", type=Path, required=True)
+    parser.add_argument("--pair-csv", type=Path, required=True)
+    parser.add_argument("--pair-by-path-csv", type=Path, required=True)
+    parser.add_argument("--marginal-csv", type=Path, required=True)
+    parser.add_argument("--verb-csv", type=Path, required=True)
+    parser.add_argument("--noun-csv", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--output-query-name",
+        type=str,
+        default="ek100_mir_query_exposure_with_provenance.csv",
+    )
+    parser.add_argument(
+        "--output-pair-name",
+        type=str,
+        default="ek100_mir_pair_exposure_units_with_provenance.csv",
+    )
+    return parser.parse_args()
 
-PAIR_CSV = Path("Data/processed/egoclip_ek100_pair_freq_v3_full.csv")
-PAIR_BY_PATH_CSV = Path("Data/processed/egoclip_ek100_pair_freq_by_path_v3_full.csv")
-MARGINAL_CSV = Path("Data/processed/egoclip_ek100_marginal_only_v3_full.csv")
-VERB_CSV = Path("Data/processed/egoclip_ek100_seen_verbs_v3_full.csv")
-NOUN_CSV = Path("Data/processed/egoclip_ek100_seen_nouns_v3_full.csv")
+args = parse_args()
 
-OUT_DIR = Path("Data/processed/exposure_metric_analysis_v3_full_20260705")
+QUERY_CSV = args.query_csv
+PAIR_CSV = args.pair_csv
+PAIR_BY_PATH_CSV = args.pair_by_path_csv
+MARGINAL_CSV = args.marginal_csv
+VERB_CSV = args.verb_csv
+NOUN_CSV = args.noun_csv
+
+OUT_DIR = args.output_dir
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-OUT_QUERY = OUT_DIR / "ek100_mir_v3_full_query_exposure_with_provenance.csv"
-OUT_PAIR = OUT_DIR / "ek100_mir_v3_full_pair_exposure_units_with_provenance.csv"
+OUT_QUERY = OUT_DIR / args.output_query_name
+OUT_PAIR = OUT_DIR / args.output_pair_name
 
 for p in [QUERY_CSV, PAIR_CSV, PAIR_BY_PATH_CSV, MARGINAL_CSV, VERB_CSV, NOUN_CSV]:
     if not p.exists():
