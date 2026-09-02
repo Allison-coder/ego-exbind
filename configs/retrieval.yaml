@@ -1,0 +1,12 @@
+data:
+  egovlpv2_root: /path/to/EgoVLPv2
+  feature_pt: /path/to/ek100_zs_features_dl0.pt
+  meta_dir: /path/to/epic-kitchens-100-annotations/retrieval_annotations
+  exposure_query_csv: /path/to/ek100_mir_query_exposure_with_provenance.csv
+
+output:
+  root: outputs/retrieval
+
+validation:
+  expected_v2t_units: 9668
+  expected_t2v_units: 3842
