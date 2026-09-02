@@ -1,0 +1,21 @@
+data:
+  egoclip_csv: /path/to/egoclip.csv
+  verb_map_csv: /path/to/ek100_verb_word2class.csv
+  noun_map_csv: /path/to/ek100_noun_word2class.csv
+  query_csv: /path/to/ek100_mir_query.csv
+
+output:
+  root: outputs/exposure
+
+ledger:
+  run_name: ego_exbind
+  limit: 0
+  chunksize: 50000
+  batch_size: 1000
+  part_size: 500000
+
+validation:
+  expected_total: 9668
+  expected_sc: 8648
+  expected_uc: 713
+  expected_ua: 307
