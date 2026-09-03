@@ -1,0 +1,9 @@
+experiment:
+  seeds: [2026, 2027, 2028]
+  modes:
+    - original
+    - zeroed
+    - shuffled
+
+validation:
+  paper_check: true
