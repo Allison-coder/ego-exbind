@@ -48,3 +48,20 @@ conda-meta/
 .vscode/
 .idea/
 .DS_Store
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Experiment outputs and cluster logs
+ego_exbind_outputs/
+*.out
+*.err
+
+# Large model/data artifacts
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npy
+*.npz
