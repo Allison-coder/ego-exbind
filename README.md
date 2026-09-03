@@ -1,4 +1,4 @@
-# Ego-ExBind: Diagnosing Pretraining Exposure and Verb--Noun Binding in Egocentric Video--Text Retrieval
+# Ego-ExBind: Diagnosing Pretraining Exposure and Verb-Noun Binding in Egocentric Video-Text Retrieval
 
 This repository contains the cleaned code and processed research artefacts for **Ego-ExBind**, a diagnostic protocol for studying the relationship between pretraining exposure and verb--noun binding in egocentric video--text retrieval.
 
