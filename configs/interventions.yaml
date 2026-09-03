@@ -1,0 +1,6 @@
+
+
+decorrelation:
+  weights: [0, 1, 50, 100]
+  seeds: [2026, 2027, 2028]
+  probe_scope: controlled_C3
