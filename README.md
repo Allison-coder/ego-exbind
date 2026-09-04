@@ -4,7 +4,7 @@
 
 > **TL;DR:** Ego-ExBind separates pretraining exposure from compositional binding and shows that stronger exposure-associated retrieval performance does not necessarily imply stronger verb–noun binding.
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```text
 ego-exbind/
@@ -20,7 +20,7 @@ ego-exbind/
     └── interventions/  # Representation- and score-level interventions
 ```
 
-## Environment Preparation
+## 🛠️ Environment Preparation
 
 The code was developed and tested with Python 3.8.13 and PyTorch 1.13.1+cu116.
 
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 Experiment configurations are provided in [`configs/`](configs/).
 
-## Data and Pretrained Model
+## 📦 Data and Pretrained Model
 
 The experiments use:
 
@@ -47,7 +47,7 @@ Large datasets, videos, checkpoints, cached features, and trained model weights 
 
 See [`data/README.md`](data/README.md) for dataset and checkpoint setup.
 
-## Experiments
+## 🔬 Experiments
 
 The main experiment pipeline consists of:
 
@@ -75,7 +75,7 @@ scripts/
 
 Detailed arguments and the mapping between dissertation experiments, scripts, and outputs are documented in [`docs/experiment_mapping.md`](docs/experiment_mapping.md).
 
-## Results
+## 📊 Results
 
 Machine-readable result tables and released dissertation figures are stored under:
 
@@ -91,10 +91,10 @@ Released and excluded research artefacts are documented in [`docs/artifact_manif
 
 The Exposure Ledger freeze protocol is documented in [`docs/exposure_freeze.md`](docs/exposure_freeze.md).
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 This work builds upon **EgoVLPv2**, **EgoClip**, and **EPIC-KITCHENS-100**. We thank the authors and maintainers of these projects and datasets.
 
-## Citation
+## 🎓 Citation
 
 Citation information will be added upon paper release.
