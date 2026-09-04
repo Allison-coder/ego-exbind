@@ -43,6 +43,11 @@ The experiments use:
 - **EPIC-KITCHENS-100 Multi-Instance Retrieval (EK100-MIR)** for downstream evaluation;
 - **EgoVLPv2** as the pretrained video–language backbone.
 
+Official resources:
+
+- EgoVLPv2: <https://github.com/facebookresearch/EgoVLPv2>
+- EPIC-KITCHENS-100 annotations: <https://github.com/epic-kitchens/epic-kitchens-100-annotations>
+
 ## 🔬 Experiments
 
 The main experiment pipeline consists of:
