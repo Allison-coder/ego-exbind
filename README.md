@@ -8,16 +8,16 @@
 
 ```text
 ego-exbind/
-├── configs/        # Experiment configurations
-├── data/           # Dataset and checkpoint setup
-├── docs/           # Experiment and artefact documentation
-├── results/        # Released result artefacts
-├── scripts/        # Experiment entry points
+├── configs/
+├── data/
+├── docs/
+├── results/
+├── scripts/
 └── src/
-    ├── exposure/       # Exposure Ledger construction
-    ├── retrieval/      # Retrieval and exposure analyses
-    ├── binding/        # Verb–noun binding diagnostics
-    └── interventions/  # Representation- and score-level interventions
+    ├── exposure/
+    ├── retrieval/
+    ├── binding/
+    └── interventions/
 ```
 
 ## 🛠️ Environment Preparation
@@ -42,10 +42,6 @@ The experiments use:
 - **EgoClip** for measuring pretraining exposure;
 - **EPIC-KITCHENS-100 Multi-Instance Retrieval (EK100-MIR)** for downstream evaluation;
 - **EgoVLPv2** as the pretrained video–language backbone.
-
-Large datasets, videos, checkpoints, cached features, and trained model weights are not redistributed in this repository.
-
-See [`data/README.md`](data/README.md) for dataset and checkpoint setup.
 
 ## 🔬 Experiments
 
@@ -73,8 +69,6 @@ scripts/
 └── 05_run_counterfactual_exposure.sh
 ```
 
-Detailed arguments and the mapping between dissertation experiments, scripts, and outputs are documented in [`docs/experiment_mapping.md`](docs/experiment_mapping.md).
-
 ## 📊 Results
 
 Machine-readable result tables and released dissertation figures are stored under:
@@ -86,10 +80,6 @@ results/
 ```
 
 The CSV files contain the numerical results underlying the corresponding dissertation tables; formatting and rounding may differ from the typeset LaTeX tables.
-
-Released and excluded research artefacts are documented in [`docs/artifact_manifest.md`](docs/artifact_manifest.md).
-
-The Exposure Ledger freeze protocol is documented in [`docs/exposure_freeze.md`](docs/exposure_freeze.md).
 
 ## 🙏 Acknowledgements
 
