@@ -1,10 +1,10 @@
-# Ego-ExBind: Diagnosing Pretraining Exposure and Verb-Noun Binding in Egocentric Video-Text Retrieval
+# Ego-ExBind: Diagnosing Pretraining Exposure and Verb–Noun Binding in Egocentric Video–Text Retrieval
 
-This repository contains the cleaned code and processed research artefacts for **Ego-ExBind**, a diagnostic protocol for studying the relationship between pretraining exposure and verb--noun binding in egocentric video--text retrieval.
+This repository contains the cleaned code and processed research artefacts for **Ego-ExBind**, a diagnostic protocol for studying the relationship between pretraining exposure and verb–noun binding in egocentric video–text retrieval.
 
 Ego-ExBind builds an **Exposure Ledger** from the EgoClip pretraining corpus, partitions EPIC-KITCHENS-100 Multi-Instance Retrieval (EK100-MIR) examples into **Seen Composition (SC)**, **Unseen Composition (UC)**, and **Unseen Atom (UA)** settings, and evaluates binding-sensitive behaviour using controlled noun-swap and verb-swap probes.
 
-The main finding is that exposure-associated retrieval gains are not necessarily accompanied by stronger verb--noun binding.
+Our main finding is that stronger exposure-associated retrieval performance does not necessarily imply stronger verb–noun binding.
 
 ## Environment
 
@@ -28,7 +28,7 @@ The experiments use:
 
 - **EgoClip** for measuring pretraining exposure;
 - **EPIC-KITCHENS-100 (EK100)** for multi-instance retrieval evaluation;
-- **EgoVLPv2** as the pretrained video--language model.
+- **EgoVLPv2** as the pretrained video–language model.
 
 Large datasets, videos, checkpoints, cached features, and trained model weights are not included in this repository. Dataset and checkpoint setup instructions are provided in `data/README.md`.
 
@@ -37,11 +37,15 @@ Large datasets, videos, checkpoints, cached features, and trained model weights 
 ```text
 ego-exbind/
 ├── configs/        # Experiment configuration files
-├── data/           # Dataset and checkpoint setup notes
-├── docs/           # Artifact and paper-result mapping notes
-├── results/        # Released paper-facing tables and figure placeholders
-├── scripts/        # One-command experiment entry points
-└── src/            # Exposure, retrieval, binding, and intervention code
+├── data/           # Dataset and checkpoint setup instructions
+├── docs/           # Artefact and dissertation-result mapping documentation
+├── results/        # Released dissertation result artefacts
+├── scripts/        # End-to-end experiment entry points
+└── src/
+    ├── exposure/       # Exposure Ledger construction and validation
+    ├── retrieval/      # Zero-shot retrieval and exposure analyses
+    ├── binding/        # Controlled verb–noun binding diagnostics
+    └── interventions/  # Representation- and score-level interventions
 ```
 
 ## Reproducing Experiments
@@ -50,7 +54,7 @@ The scripts below are the public entry points for the dissertation experiments. 
 
 ### 1. Exposure Ledger
 
-EgoClip narrations are parsed into verbs, nouns, and verb--noun pairs, then mapped into the EK100 action taxonomy. The resulting Exposure Ledger is frozen and reused across retrieval, binding, and intervention experiments.
+EgoClip narrations are parsed into verbs, nouns, and verb–noun pairs, then mapped into the EK100 action taxonomy. The resulting Exposure Ledger is frozen and reused across retrieval, binding, and intervention experiments.
 
 ```bash
 bash scripts/01_build_exposure_ledger.sh configs/exposure.yaml
@@ -80,11 +84,11 @@ bash scripts/03_run_binding_probe.sh \
   --out-dir outputs/binding
 ```
 
-The reported diagnostics include noun- and verb-swap accuracies, similarity margins, and margin--exposure correlations.
+The reported diagnostics include noun- and verb-swap accuracies, similarity margins, and margin–exposure correlations.
 
 ### 4. Diagnostic Interventions
 
-Retrieval-oriented interventions test whether downstream adaptation restores the frozen binding-sensitive profile.
+Retrieval-oriented interventions test whether downstream adaptation improves verb–noun binding in addition to retrieval performance.
 
 ```bash
 bash scripts/04_run_adapter_interventions.sh
@@ -115,7 +119,7 @@ Three inference-time exposure conditions are compared:
 
 ## Results
 
-Final dissertation tables and figure locations are stored under:
+Released dissertation result artefacts are stored under:
 
 ```text
 results/
@@ -127,9 +131,7 @@ The mapping between dissertation figures/tables, scripts, and output artefacts i
 
 Released and excluded research artefacts are documented in `docs/artifact_manifest.md`.
 
-## Paper-Result Mapping
-
-See `docs/experiment_mapping.md` for the mapping between dissertation results and repository entry points.
+Additional documentation on freezing the Exposure Ledger is provided in `docs/exposure_freeze.md`.
 
 ## Citation
 
