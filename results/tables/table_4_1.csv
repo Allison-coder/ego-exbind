@@ -1,0 +1,5 @@
+direction,metric,atom_only_R2,atom_composition_R2,delta_R2,beta_pair,HC3_p
+V2T,mAP,0.012,0.025,0.013,3.117,0.033*
+V2T,nDCG,0.129,0.159,0.030,2.931,2.27e-4 ***
+T2V,mAP,0.018,0.094,0.076,7.042,3.37e-5 ***
+T2V,nDCG,0.073,0.203,0.131,7.056,3.18e-9 ***

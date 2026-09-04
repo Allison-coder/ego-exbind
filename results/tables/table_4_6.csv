@@ -1,0 +1,4 @@
+condition,mAP_V2T,mAP_T2V,nDCG_V2T,nDCG_T2V,V2T_mAP_SC,V2T_mAP_UC,noun_binding_margin,verb_binding_margin,noun_exposure_corr,verb_exposure_corr
+Original,33.70,27.73,44.22,40.31,34.97,24.51,0.058,0.064,0.043,-0.053
+Zeroed,32.91,27.73,43.04,40.31,33.94,26.14,0.058,0.065,0.042,-0.053
+Shuffled,32.56,27.73,42.80,40.31,33.56,26.15,0.058,0.064,0.042,-0.052

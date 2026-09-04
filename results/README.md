@@ -8,7 +8,7 @@ This directory contains the lightweight result artefacts released with Ego-ExBin
 
 ## Tables
 
-`tables/` contains machine-readable CSV summaries underlying selected dissertation tables.
+`tables/` contains machine-readable CSV summaries underlying the main dissertation tables, including Tables 4.1-4.6.
 
 CSV values retain the numerical experiment outputs, while presentation, rounding, and column layout may differ from the typeset LaTeX tables.
 

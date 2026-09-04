@@ -13,7 +13,7 @@ This repository contains cleaned code and small paper-facing research artefacts.
 | Binding probe code | `src/binding/`, `scripts/03_run_binding_probe.sh` | Evaluates noun-swap and verb-swap diagnostics |
 | Adapter intervention code | `src/interventions/`, `scripts/04_run_adapter_interventions.sh` | Validates Tables 4.3-4.5 |
 | Counterfactual exposure code | `src/interventions/exposure_reweighting.py`, `scripts/05_run_counterfactual_exposure.sh` | Evaluates Table 4.6 |
-| Paper-facing intervention tables | `results/tables/` | Released CSV summaries for Tables 4.3-4.5 |
+| Paper-facing result tables | `results/tables/` | Released CSV summaries for Tables 4.1-4.6 |
 
 ## Excluded Artefacts
 

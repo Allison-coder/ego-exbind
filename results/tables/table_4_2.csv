@@ -1,0 +1,2 @@
+probe_set,noun_accuracy,noun_margin,noun_pearson_r,noun_spearman_rho,verb_accuracy,verb_margin,verb_pearson_r,verb_spearman_rho
+Large val-SC,0.875,0.222,0.157,0.181,0.782,0.092,-0.089,-0.072
