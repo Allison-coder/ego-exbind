@@ -20,4 +20,4 @@ The EK100 verb and noun taxonomies are also used when mapping EgoClip narrations
 
 ## Pretrained model
 
-We use **EgoVLPv2 pretrained on EgoClip** as the video--language backbone.
+We use **EgoVLPv2 pretrained on EgoClip** as the video-language backbone.
