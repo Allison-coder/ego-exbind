@@ -1,10 +1,10 @@
 # Results
 
-This directory contains the lightweight result artefacts released with Ego-ExBind.
+This directory contains lightweight experiment result artefacts released with Ego-ExBind.
 
 ## Figures
 
-`figures/` contains the final dissertation figures associated with the main exposure and binding analyses.
+`figures/` contains the final experiment figures used in the dissertation.
 
 ## Tables
 
@@ -12,4 +12,4 @@ This directory contains the lightweight result artefacts released with Ego-ExBin
 
 CSV values retain the numerical experiment outputs, while presentation, rounding, and column layout may differ from the typeset LaTeX tables.
 
-For the mapping between paper results and code entry points, see [`../docs/experiment_mapping.md`](../docs/experiment_mapping.md).
+For the mapping between dissertation results and code entry points, see [`../docs/experiment_mapping.md`](../docs/experiment_mapping.md).
