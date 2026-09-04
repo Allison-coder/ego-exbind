@@ -119,13 +119,15 @@ Three inference-time exposure conditions are compared:
 
 ## Results
 
-Released dissertation result artefacts are stored under:
+Machine-readable result tables and released dissertation figures are stored under:
 
 ```text
 results/
 ├── figures/
 └── tables/
 ```
+
+The CSV files contain the numerical results underlying the corresponding dissertation tables; formatting and rounding may differ from the typeset LaTeX tables in the dissertation.
 
 The mapping between dissertation figures/tables, scripts, and output artefacts is documented in [`docs/experiment_mapping.md`](docs/experiment_mapping.md).
 
