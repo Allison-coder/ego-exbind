@@ -30,7 +30,7 @@ The experiments use:
 - **EPIC-KITCHENS-100 (EK100)** for multi-instance retrieval evaluation;
 - **EgoVLPv2** as the pretrained video–language model.
 
-Large datasets, videos, checkpoints, cached features, and trained model weights are not included in this repository. Dataset and checkpoint setup instructions are provided in `data/README.md`.
+Large datasets, videos, checkpoints, cached features, and trained model weights are not included in this repository. Dataset and checkpoint setup instructions are provided in [`data/README.md`](data/README.md).
 
 ## Repository Structure
 
@@ -70,7 +70,7 @@ bash scripts/02_run_zero_shot_retrieval.sh configs/retrieval.yaml
 
 This analysis includes SC/UC/UA comparisons, continuous pair-exposure analysis, PMI analysis, and nested regressions controlling for verb and noun marginal exposure.
 
-### 3. Verb--Noun Binding Diagnostics
+### 3. Verb–Noun Binding Diagnostics
 
 Compositional binding is evaluated using controlled noun-swap and verb-swap probes.
 
@@ -115,7 +115,7 @@ Three inference-time exposure conditions are compared:
 
 - **Original**: true sample-level exposure;
 - **Zeroed**: exposure information removed;
-- **Shuffled**: exposure distribution preserved while sample--exposure correspondence is broken.
+- **Shuffled**: exposure distribution preserved while sample–exposure correspondence is broken.
 
 ## Results
 
@@ -127,11 +127,11 @@ results/
 └── tables/
 ```
 
-The mapping between dissertation figures/tables, scripts, and output artefacts is documented in `docs/experiment_mapping.md`.
+The mapping between dissertation figures/tables, scripts, and output artefacts is documented in [`docs/experiment_mapping.md`](docs/experiment_mapping.md).
 
-Released and excluded research artefacts are documented in `docs/artifact_manifest.md`.
+Released and excluded research artefacts are documented in [`docs/artifact_manifest.md`](docs/artifact_manifest.md).
 
-Additional documentation on freezing the Exposure Ledger is provided in `docs/exposure_freeze.md`.
+Additional documentation on freezing the Exposure Ledger is provided in [`docs/exposure_freeze.md`](docs/exposure_freeze.md).
 
 ## Citation
 
