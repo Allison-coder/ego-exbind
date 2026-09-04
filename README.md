@@ -6,13 +6,15 @@ Ego-ExBind builds an **Exposure Ledger** from the EgoClip pretraining corpus, pa
 
 The main finding is that exposure-associated retrieval gains are not necessarily accompanied by stronger verb--noun binding.
 
-## Getting Started
+## Environment
+
+The code was developed and tested with Python 3.8.13 and PyTorch 1.13.1+cu116.
 
 ```bash
 git clone https://github.com/Allison-coder/ego-exbind.git
 cd ego-exbind
 
-conda create --name egoexbind python=3.8 -y
+conda create --name egoexbind python=3.8.13 -y
 conda activate egoexbind
 
 pip install -r requirements.txt
@@ -20,7 +22,7 @@ pip install -r requirements.txt
 
 Experiment configurations are stored in `configs/`.
 
-## Datasets and Models
+## Data Setup
 
 The experiments use:
 
@@ -30,14 +32,28 @@ The experiments use:
 
 Large datasets, videos, checkpoints, cached features, and trained model weights are not included in this repository. Dataset and checkpoint setup instructions are provided in `data/README.md`.
 
-## Main Experiment Pipeline
+## Repository Structure
 
-### 1. Constructing the Exposure Ledger
+```text
+ego-exbind/
+├── configs/        # Experiment configuration files
+├── data/           # Dataset and checkpoint setup notes
+├── docs/           # Artifact and paper-result mapping notes
+├── results/        # Released paper-facing tables and figure placeholders
+├── scripts/        # One-command experiment entry points
+└── src/            # Exposure, retrieval, binding, and intervention code
+```
+
+## Reproducing Experiments
+
+The scripts below are the public entry points for the dissertation experiments. Replace placeholder paths in the YAML files or command arguments with local dataset, checkpoint, and cache locations.
+
+### 1. Exposure Ledger
 
 EgoClip narrations are parsed into verbs, nouns, and verb--noun pairs, then mapped into the EK100 action taxonomy. The resulting Exposure Ledger is frozen and reused across retrieval, binding, and intervention experiments.
 
 ```bash
-bash scripts/01_build_exposure_ledger.sh
+bash scripts/01_build_exposure_ledger.sh configs/exposure.yaml
 ```
 
 ### 2. Zero-Shot Retrieval and Exposure Analysis
@@ -45,7 +61,7 @@ bash scripts/01_build_exposure_ledger.sh
 The frozen EgoVLPv2 dual encoder is evaluated on EK100-MIR using mAP and nDCG in both video-to-text (V2T) and text-to-video (T2V) directions.
 
 ```bash
-bash scripts/02_run_zero_shot_retrieval.sh
+bash scripts/02_run_zero_shot_retrieval.sh configs/retrieval.yaml
 ```
 
 This analysis includes SC/UC/UA comparisons, continuous pair-exposure analysis, PMI analysis, and nested regressions controlling for verb and noun marginal exposure.
@@ -55,7 +71,13 @@ This analysis includes SC/UC/UA comparisons, continuous pair-exposure analysis, 
 Compositional binding is evaluated using controlled noun-swap and verb-swap probes.
 
 ```bash
-bash scripts/03_run_binding_probe.sh
+bash scripts/03_run_binding_probe.sh \
+  --large-probe <path_to_large_probe_csv> \
+  --eval-cache <path_to_eval_cache> \
+  --text-embeds <path_to_text_embeds> \
+  --checkpoint <path_to_checkpoint> \
+  --meta-dir <path_to_ek100_retrieval_annotations> \
+  --out-dir outputs/binding
 ```
 
 The reported diagnostics include noun- and verb-swap accuracies, similarity margins, and margin--exposure correlations.
@@ -75,7 +97,14 @@ The intervention chain includes domain adaptation, verb-focused hard negatives, 
 Exposure-conditioned score reweighting is applied while keeping video and text representations frozen.
 
 ```bash
-bash scripts/05_run_counterfactual_exposure.sh
+bash scripts/05_run_counterfactual_exposure.sh \
+  --config configs/counterfactual.yaml \
+  --egovlpv2-root <path_to_EgoVLPv2> \
+  --eval-cache <path_to_eval_cache> \
+  --meta-dir <path_to_ek100_retrieval_annotations> \
+  --v2t-exposure-csv <path_to_v2t_exposure_csv> \
+  --checkpoint-root <path_to_counterfactual_checkpoints> \
+  --output-dir outputs/counterfactual
 ```
 
 Three inference-time exposure conditions are compared:
@@ -86,7 +115,7 @@ Three inference-time exposure conditions are compared:
 
 ## Results
 
-Final dissertation figures and tables are stored under:
+Final dissertation tables and figure locations are stored under:
 
 ```text
 results/
@@ -97,6 +126,10 @@ results/
 The mapping between dissertation figures/tables, scripts, and output artefacts is documented in `docs/experiment_mapping.md`.
 
 Released and excluded research artefacts are documented in `docs/artifact_manifest.md`.
+
+## Paper-Result Mapping
+
+See `docs/experiment_mapping.md` for the mapping between dissertation results and repository entry points.
 
 ## Citation
 
