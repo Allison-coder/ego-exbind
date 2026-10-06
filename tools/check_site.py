@@ -26,6 +26,10 @@ def main():
             assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), "Horizontal page overflow"
             assert page.locator(".actions a").first.get_attribute("href") == "https://github.com/Allison-coder/ego-exbind"
             assert page.locator(".actions a").count() == 1
+            assert page.locator(".author-list").inner_text() == "Yuqi Guo1, Michael Wray1,*"
+            assert page.locator(".author-list a").get_attribute("href") == "https://mwray.github.io/"
+            assert page.locator(".affiliation").inner_text() == "1University of Bristol"
+            assert page.locator(".corresponding-author").inner_text() == "*Corresponding author"
             assert page.locator(".adaptation-table tbody tr").last.locator("td").all_text_contents() == ["32.02", "0.055", "0.077"]
             assert "means over three random seeds" in page.locator("#interventions .source-note").inner_text()
             assert "Dissertation Fig. 2.1" not in page.locator("body").inner_text()
